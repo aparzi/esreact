@@ -11,7 +11,7 @@ export default class Header extends React.Component {
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand" href="/">
                         <img src={Logo} className="logo-image"/>
                         <span>&nbsp;EsReact</span>
                     </a>
@@ -24,7 +24,7 @@ export default class Header extends React.Component {
                             <a className="nav-item nav-link" href="#who">Chia siamo</a>
                         </div>
                         <div className="navbar-nav">
-                            <a className="nav-item nav-link" href="">Login</a>
+                            <a className="nav-item nav-link" href="/login">Login</a>
                             <a className="nav-item nav-link" href="">Registrazione</a>
                         </div>
                     </div>
