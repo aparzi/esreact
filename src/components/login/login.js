@@ -1,13 +1,19 @@
 import React from "react"
+import LoginService from "./loginService"
 
 export default class Login extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: ''
-        }
+            usename: '',
+            password: '',
+            showSuccess:false,
+            showError:false,
+            errorMessage:"",
+            successMessage:""
+        };
+        this.loginService = new LoginService();
     }
 
     changeText(field, event) {
@@ -18,12 +24,51 @@ export default class Login extends React.Component {
         event.preventDefault()
     }
 
-    doLogin() {
-       console.log("username: " + this.state.username)
+    doLogin(event) {
+        this.loginService.login(this.state.username, this.state.password, this.loginSuccess.bind(this), this.loginError.bind(this));
+
+        console.log("username: " + this.state.username)
         console.log("password: " + this.state.password)
     }
 
+    loginSuccess(dataResult) {
+        this.setState({
+           showSuccess: true,
+           successMessage: 'Complimenti per il login, il tuo token è: ' + dataResult.token,
+           showError: false,
+           errorMessage: ''
+        });
+    }
+
+    loginError(errorData) {
+        this.setState({
+            showSuccess: false,
+            successMessage: '',
+            showError: true,
+            errorMessage: 'Errore durante il login: ' + errorData.error
+        });
+    }
+
+    getSuccessMessage() {
+        if (this.state.showSuccess)
+            return <div style={{color: 'green'}}>{this.state.successMessage}</div>
+
+        return <div></div>
+
+    }
+
+    getErrorMessage() {
+        if (this.state.showError)
+            return <div style={{color: 'red'}}>{this.state.errorMessage}</div>
+
+        return <div></div>
+    }
+
     render() {
+
+        var successMessage = this.getSuccessMessage();
+        var errorMessage = this.getErrorMessage();
+
         return (
             <div style={{marginTop: "100px", minHeight: "70vh"}}>
                 <div className="container">
@@ -33,17 +78,17 @@ export default class Login extends React.Component {
                                 <div className="form-group">
                                     <input
                                         type="text"
-                                        className = "form-control"
+                                        className="form-control"
                                         placeholder="username"
-                                        value= {this.state.username || ''}
+                                        value={this.state.username || ''}
                                         onChange={this.changeText.bind(this, "username")}/>
                                 </div>
                                 <div className="form-group">
                                     <input
                                         type="password"
-                                        className = "form-control"
+                                        className="form-control"
                                         placeholder="password"
-                                        value= {this.state.password || ''}
+                                        value={this.state.password || ''}
                                         onChange={this.changeText.bind(this, "password")}/>
                                 </div>
                                 <button
@@ -52,6 +97,8 @@ export default class Login extends React.Component {
                                     onClick={this.doLogin.bind(this)}
                                 >Entra
                                 </button>
+                                {successMessage}
+                                {errorMessage}
                             </form>
                         </div>
                     </div>
