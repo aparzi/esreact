@@ -1,5 +1,6 @@
 import React from "react"
 import LoginService from "./loginService"
+import CustomInput from "../../common/input/customInput";
 
 export default class Login extends React.Component {
 
@@ -8,10 +9,10 @@ export default class Login extends React.Component {
         this.state = {
             usename: '',
             password: '',
-            showSuccess:false,
-            showError:false,
-            errorMessage:"",
-            successMessage:""
+            showSuccess: false,
+            showError: false,
+            errorMessage: "",
+            successMessage: ""
         };
         this.loginService = new LoginService();
     }
@@ -33,10 +34,10 @@ export default class Login extends React.Component {
 
     loginSuccess(dataResult) {
         this.setState({
-           showSuccess: true,
-           successMessage: 'Complimenti per il login, il tuo token è: ' + dataResult.token,
-           showError: false,
-           errorMessage: ''
+            showSuccess: true,
+            successMessage: 'Complimenti per il login, il tuo token è: ' + dataResult.token,
+            showError: false,
+            errorMessage: ''
         });
     }
 
@@ -75,27 +76,27 @@ export default class Login extends React.Component {
                     <div className="row">
                         <div className="col-6 mr-auto ml-auto">
                             <form onSubmit={this.onSubmit.bind(this)}>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="username"
+                                <div>
+                                    <CustomInput
                                         value={this.state.username || ''}
-                                        onChange={this.changeText.bind(this, "username")}/>
+                                        onChange={this.changeText.bind(this, 'username')}
+                                        label="Username" />
                                 </div>
-                                <div className="form-group">
-                                    <input
+                                <br />
+                                <div>
+                                    <CustomInput
                                         type="password"
-                                        className="form-control"
-                                        placeholder="password"
-                                        value={this.state.password || ''}
-                                        onChange={this.changeText.bind(this, "password")}/>
+                                        value={this.state.password}
+                                        onChange={this.changeText.bind(this, 'password')}
+                                        style={{width: '97px'}}
+                                        label="Password"/>
                                 </div>
+                                <br />
                                 <button
                                     type="submit"
                                     className="btn btn-primary pull-right"
-                                    onClick={this.doLogin.bind(this)}
-                                >Entra
+                                    onClick={this.doLogin.bind(this)}>
+                                    Entra
                                 </button>
                                 {successMessage}
                                 {errorMessage}
