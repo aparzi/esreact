@@ -3,12 +3,9 @@ import FirstSlideImage from "../../images/carousel/book1.jpeg";
 import SecondSlideImage from "../../images/carousel/book2.jpeg";
 import ThirdSlideImage from "../../images/carousel/book3.jpeg";
 import BookPassionate from "../../images/book-passionate.jpeg";
-import homeCss from "../../css/home/home.css";
+import "../../css/home/home.css";
 
 export default class Home extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (

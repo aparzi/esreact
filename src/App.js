@@ -7,11 +7,6 @@ import MainTemplate from "./components/mainLayout/template/mainTemplate"
 
 class App extends Component {
 
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         return (

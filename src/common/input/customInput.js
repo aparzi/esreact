@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 
 export default class CustomInput extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     getLabelAddon() {
         if(this.props.label.length > 0)
             return <div className="input-group-addon" style={this.props.style}>{this.props.label}</div>

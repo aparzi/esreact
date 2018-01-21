@@ -1,5 +1,5 @@
 import React from "react"
-import headerCss from "../../../css/mainLayout/header/header.css"
+import "../../../css/mainLayout/header/header.css"
 import Logo from "../../../images/notebook.png"
 
 export default class Header extends React.Component {
@@ -8,11 +8,11 @@ export default class Header extends React.Component {
         return (
             <div>
                 <nav className="navbar fixed-top navbar-toggleable-md navbar-light bg-success">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <a className="navbar-brand" href="/">
-                        <img src={Logo} className="logo-image"/>
+                        <img src={Logo} alt="logo" className="logo-image"/>
                         <span>&nbsp;EsReact</span>
                     </a>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">

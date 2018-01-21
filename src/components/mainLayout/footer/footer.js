@@ -1,11 +1,7 @@
 import React from "react"
-import footerCss from "../../../css/mainLayout/footer/footer.css"
+import "../../../css/mainLayout/footer/footer.css"
 
 export default class Footer extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
